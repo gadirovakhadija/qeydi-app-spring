@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserServiceInter {
 
-    List<User> getAll(String name, String surname, String email, String password);
+    List<User> getAll(String name, String surname, String email);
     User findByEmail(String email);
     User findById(int id);
     int findIdByEmail(String email);

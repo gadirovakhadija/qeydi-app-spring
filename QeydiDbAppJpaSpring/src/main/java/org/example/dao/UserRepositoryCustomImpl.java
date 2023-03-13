@@ -16,7 +16,7 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
     @Override
     @Cacheable("users")
-    public List<User> getAll(String name, String surname, String email, String password) {
+    public List<User> getAll(String name, String surname, String email) {
 
 
         String jpql = "SELECT u from User u where 1=1";
@@ -30,9 +30,6 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         if (email != null && !email.trim().isEmpty()) {
             jpql += " and u.email=:email ";
         }
-        if (password != null && !password.trim().isEmpty()) {
-            jpql += " and u.password=:password ";
-        }
 
         Query query = em.createQuery(jpql, User.class);
 
@@ -44,9 +41,6 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         }
         if (email != null && !email.trim().isEmpty()) {
             query.setParameter("email", email);
-        }
-        if (password != null && !password.trim().isEmpty()) {
-            query.setParameter("password", password);
         }
 
         return query.getResultList();

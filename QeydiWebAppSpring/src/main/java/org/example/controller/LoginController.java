@@ -42,8 +42,8 @@ public class LoginController {
             throw new IllegalArgumentException("Parol yanlishdir");
         }
 
-        ModelAndView mv = new ModelAndView("users");
-        mv.addObject("loggedInUser",user);
+        ModelAndView mv = new ModelAndView("redirect:/users");
+//        mv.addObject("loggedInUser",user);
         return mv;
     }
 
@@ -59,7 +59,7 @@ public class LoginController {
         System.out.println(user.getName());
 
         ModelAndView mv = new ModelAndView("redirect:/users");
-        mv.addObject("loggedInUser",u);
+//        mv.addObject("loggedInUser",user);
         return mv;
     }
 }

@@ -27,9 +27,11 @@ private UserServiceInter userServiceInter;
 
     @Override
     public void run(String... args) throws Exception {
-//        User u = new User(24,"Elvin","Nasibov",27,"bdu",240,"donthave",2,5,"234567",240);
+        User u = new User(22,"Elvin","Nasibov",27,"bdu",240,"donthave",2,5,"234567",240);
+        userServiceInter.updateUser(u);
+//        System.out.println(userServiceInter.getAll("Elvin","Nasibov","enasibov@gmail.com"));
+//        System.out.println(userServiceInter.getAll("kadi","gadi","nem@gmail.com"));
 
-        System.out.println(userServiceInter.getAll("Elvin","Nasibov","enasibov@gmail.com","12345"));
         //        System.out.println(userServiceInter.findIdByEmailAndPassword("gadirovelsen@gmail.com","12345"));
     }
 }

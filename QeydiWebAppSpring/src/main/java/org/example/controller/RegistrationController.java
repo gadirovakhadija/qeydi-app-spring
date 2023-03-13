@@ -52,12 +52,12 @@ public class RegistrationController {
         int userId = userService.findIdByEmail(u.getEmail());
         System.out.println(userId);
 
-        User us = new User(u.getId(), u.getName(), u.getSurname(),
+        User us = new User(userId, u.getName(), u.getSurname(),
                 u.getAge(), u.getUniversity(), u.getPoint(), u.getExperience(),
                 u.getTeachwayId(), u.getSubjectId(), u.getCode(), u.getCost());
 
         userService.updateUser(us);
-        return "users";
+        return "redirect:/users";
     }
 //    @ModelAttribute("registrationModel")
 //    public UserForm getEmptyUserForm(){

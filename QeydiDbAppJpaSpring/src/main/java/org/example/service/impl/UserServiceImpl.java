@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserServiceInter {
     UserRepository userRepo;
 
     @Override
-    public List<User> getAll(String name, String surname, String email, String password) {
-        return userRepoCust.getAll(name, surname, email, password);
+    public List<User> getAll(String name, String surname, String email) {
+        return userRepoCust.getAll(name, surname, email);
     }
 
     @Override

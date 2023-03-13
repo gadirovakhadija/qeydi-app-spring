@@ -34,15 +34,16 @@ public String users(
 ){
 //    List<User> user = userService.getAll(u.getName(),u.getSurname(),u.getEmail(),u.getPassword());
 
-    return "reset";
+    return "users";
 }
-    @RequestMapping(method = {RequestMethod.GET}, value="/users")//users?name=Sarkhan
+    @RequestMapping(method = {RequestMethod.GET}, value="/users")
     public ModelAndView usersGet(
-            @ModelAttribute("registrationModel") UserForm u
+            @ModelAttribute("signupModel") UserForm u
     ){
-
-        List<User> user = userService.getAll(u.getName(),u.getSurname(),u.getEmail(),u.getPassword());
+        List<User> user = userService.getAll(u.getName(),u.getSurname(),u.getEmail());
+//        User us = userService.findByEmail(u.getEmail());
         ModelAndView mv = new ModelAndView("users");
+//        mv.addObject("user",us);
         mv.addObject("users",user);
 
         return mv;

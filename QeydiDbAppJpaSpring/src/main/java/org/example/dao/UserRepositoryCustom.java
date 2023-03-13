@@ -5,6 +5,6 @@ import org.example.entity.User;
 import java.util.List;
 
 public interface UserRepositoryCustom {
-    public List<User> getAll(String name, String surname, String email, String password);
+    public List<User> getAll(String name, String surname, String email);
 
 }

@@ -16,7 +16,7 @@
         <div id="logo">
             <h1><b><a href="users">Qeydi</a></b></h1>
 
-<!--            <p th:text="Wellcome ${loggedInUser.name} ${loggedInUser.surname}"></p>-->
+<!--            <p th:text="${user.email}"> </p>-->
         </div>
 <!--        Kicik SignUp -->
         <div id="upsignup">
@@ -71,8 +71,8 @@
 <!--                    <%&#45;&#45;                ${if(u.getTeachway()!=null)}&#45;&#45;%>-->
                     <td th:text="${u.name}"></td>
                     <td th:text="${u.surname}"></td>
-                    <td th:text="${u.email}"></td>
-                    <td th:text="${u.university}"></td>
+                    <td th:text="${u.teachway}"></td>
+                    <td th:text="${u.subject}"></td>
                     <td th:text="${u.cost}"></td>
 
 <!--                    <td>${u.getName()}</td>-->
