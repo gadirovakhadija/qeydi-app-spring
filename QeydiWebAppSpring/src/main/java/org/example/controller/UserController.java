@@ -41,8 +41,9 @@ public String users(
             @ModelAttribute("signupModel") UserForm u
     ){
         List<User> user = userService.getAll(u.getName(),u.getSurname(),u.getEmail());
-//        User us = userService.findByEmail(u.getEmail());
+        User us = userService.findByEmail(u.getEmail());
         ModelAndView mv = new ModelAndView("users");
+        System.out.println(us.getName());
 //        mv.addObject("user",us);
         mv.addObject("users",user);
 
