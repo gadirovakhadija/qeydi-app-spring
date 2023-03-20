@@ -38,17 +38,21 @@ public String users(
 }
     @RequestMapping(method = {RequestMethod.GET}, value="/users")
     public ModelAndView usersGet(
-            @ModelAttribute("signupModel") UserForm u
+            @ModelAttribute("signinModel") UserForm u
     ){
+        System.out.println("lstin ustu");
         List<User> user = userService.getAll(u.getName(),u.getSurname(),u.getEmail());
-        User us = userService.findByEmail(u.getEmail());
+        System.out.println("listin alti");
+        //burda dayanib
+//        User us = userService.findByEmail(u.getEmail());
+        System.out.println("findbyemailin alti");
         ModelAndView mv = new ModelAndView("users");
-        System.out.println(us.getName());
+        System.out.println("mv nin alti");
+//        System.out.println(us.getName());
 //        mv.addObject("user",us);
         mv.addObject("users",user);
-
+        System.out.println("mv nin alti birde");
         return mv;
-
     }
 //    @PostMapping("/users")
 //@RequestMapping(method = {RequestMethod.GET}, value="/users")

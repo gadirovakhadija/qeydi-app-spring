@@ -29,15 +29,26 @@ public class SecurityConfig {
 public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http
+            .csrf()
+            .disable()
             .authorizeHttpRequests()
-            .requestMatchers( "/login**").permitAll()
-            .anyRequest().authenticated()
+            .requestMatchers( "/login").permitAll()
+            .and()
+            .authorizeHttpRequests()
+//            .requestMatchers( "/sign-in").permitAll()
+            .requestMatchers("/users").hasAnyAuthority("ADMIN")
+            .and()
+//            .requestMatchers( "/users").permitAll()
+
+//            .requestMatchers( "/reset").permitAll()
+            .authorizeHttpRequests()
+            .anyRequest().hasAnyAuthority("ADMIN")
             .and()
             .formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/",true)
+//                                .loginProcessingUrl("/sign-in")
+                                .defaultSuccessUrl("/users")
                                 .permitAll()
                 ).logout(
                         logout -> logout

@@ -27,10 +27,10 @@ public class LoginController {
     public String login(){
         return "login";
     }
-    @RequestMapping(method = {RequestMethod.POST}, value="/sign-in")
+    @RequestMapping(method = {RequestMethod.GET}, value="/sign-in")
     public ModelAndView signIn(
-            @RequestParam(value="email") String email,
-            @RequestParam(value="password") String password){
+            @RequestParam(value="email", required = false) String email,
+            @RequestParam(value="password", required = false) String password){
         User user = userService.findByEmail(email);
 
         if (user == null) {
@@ -41,8 +41,9 @@ public class LoginController {
         if (!rs.verified) {
             throw new IllegalArgumentException("Parol yanlishdir");
         }
-
+        System.out.println("redirect user den evvel login ici");
         ModelAndView mv = new ModelAndView("redirect:/users");
+        System.out.println("redirectUsersden sonra Loginin ici");
 //        mv.addObject("loggedInUser",user);
         return mv;
     }
