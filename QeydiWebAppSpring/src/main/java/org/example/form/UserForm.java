@@ -1,7 +1,5 @@
 package org.example.form;
 
-import org.example.entity.Subject;
-import org.example.entity.Teachway;
 
 public class UserForm {
     private int id;

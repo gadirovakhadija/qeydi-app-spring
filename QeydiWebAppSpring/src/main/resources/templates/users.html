@@ -65,13 +65,11 @@
             </tr>
             </thead>
             <tbody>
-<!--            <c:forEach items="${users}" var="u">-->
                 <tr th:each="u:${users}">
 
-<!--                    <%&#45;&#45;                ${if(u.getTeachway()!=null)}&#45;&#45;%>-->
                     <td th:text="${u.name}"></td>
                     <td th:text="${u.surname}"></td>
-                    <td th:text="${u.teachway}"></td>
+                    <td th:text="${u.teachway.teachway}"></td>
                     <td th:text="${u.subject}"></td>
                     <td th:text="${u.cost}"></td>
 

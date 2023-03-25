@@ -23,34 +23,12 @@
 //    @Override
 //    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 //        User user = userRepo.findByEmail(email);
-//        System.out.println("loadUserTeref");
 //        if(user !=null){
-//            System.out.println("loadUserTeref");
-//
 //            UserBuilder builder = withUsername(email);
-//            System.out.println("loadUserTeref");
-//
 //            builder.disabled(false);
-//            System.out.println("loadUserTeref");
-//
 //            builder.password(user.getPassword());
-//            System.out.println("loadUserTeref");
-//
-//
 //            String[] authoritiesArr = new String[]{ "ADMIN", "USER", "ROLE_USER"};
-////            ArrayList<String> auts = new ArrayList<String>();
-////            Set<Role> roles = user.getRole();
-////
-////        for (Role role : roles) {
-////            auts.add(role.getRole());
-////        }
-////            builder.authorities((GrantedAuthority) auts);
-////            String[] authoritiesArr = new String[]{user.getRole().toString()};
-////            System.out.println("loadUserTeref");
-////            System.out.println(authoritiesArr);
-////            String[] authoritiesArr = new String[]{user.getRole().toString()};
 //            builder.authorities(authoritiesArr);
-////            System.out.println(user.getRole());
 //            return builder.build();
 //        }else{
 //            throw new UsernameNotFoundException("User not found...");
