@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserServiceInter {
     @Override
     public void addUser(User u) {
 
-        u.setPassword(crypt.hashToString(4, u.getPassword().toCharArray()));
+//        u.setPassword(crypt.hashToString(4, u.getPassword().toCharArray()));
         userRepo.save(u);
     }
 

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.lang.module.FindException;
+
 //import static org.example.service.impl.UserServiceImpl.verifyer;
 
 
@@ -41,9 +43,7 @@ public class LoginController {
         if (!rs.verified) {
             throw new IllegalArgumentException("Parol yanlishdir");
         }
-        System.out.println("redirect user den evvel login ici");
         ModelAndView mv = new ModelAndView("redirect:/users");
-        System.out.println("redirectUsersden sonra Loginin ici");
 //        mv.addObject("loggedInUser",user);
         return mv;
     }
@@ -52,12 +52,15 @@ public class LoginController {
     public ModelAndView signUp(
             @ModelAttribute("signupModel") UserForm u
     ){
-        System.out.println(u.getSurname());
-        int userId = 0;
-        User user = new User(userId,u.getName(), u.getSurname(), u.getEmail(), u.getPassword());
+        if (userService.findByEmail(u.getEmail()) != null)
+            throw new FindException("Username already in use");
+
+        User user = new User();
+        user.setName(u.getName());
+        user.setSurname(u.getSurname());
+        user.setEmail(u.getEmail());
+        user.setPassword(crypt.hashToString(4, u.getPassword().toCharArray()));
         userService.addUser(user);
-        System.out.println(user);
-        System.out.println(user.getName());
 
         ModelAndView mv = new ModelAndView("redirect:/users");
 //        mv.addObject("loggedInUser",user);
